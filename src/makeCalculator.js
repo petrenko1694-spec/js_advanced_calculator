@@ -4,38 +4,42 @@
  * @return {object}
  */
 function makeCalculator() {
-  const obj = {
+  const calculator = {
     result: 0,
 
     operate(call, val) {
       call(val);
 
-      return { operate: obj.operate, reset: obj.reset };
+      const result = calculator.result;
+
+      calculator.result = result;
+
+      return { operate: calculator.operate, reset: calculator.reset };
     },
 
     add(value) {
-      obj.result += value;
+      calculator.result += value;
     },
 
     subtract(value) {
-      obj.result -= value;
+      calculator.result -= value;
     },
 
     multiply(value) {
-      obj.result *= value;
+      calculator.result *= value;
     },
 
     divide(value) {
-      obj.result /= value;
+      calculator.result /= value;
     },
 
     reset(value) {
-      obj.result = 0;
+      calculator.result = 0;
 
-      return { operate: obj.operate, reset: obj.reset };
+      return { operate: calculator.operate, reset: calculator.reset };
     },
   };
 
-  return obj;
+  return calculator;
 }
 module.exports = makeCalculator;
