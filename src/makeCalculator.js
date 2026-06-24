@@ -8,35 +8,31 @@ function makeCalculator() {
     result: 0,
 
     operate(call, val) {
-      call(val);
+      calculator.result = call(val);
 
-      const result = calculator.result;
-
-      calculator.result = result;
-
-      return { operate: calculator.operate, reset: calculator.reset };
+      return calculator;
     },
 
     add(value) {
-      calculator.result += value;
+      return calculator.result + value;
     },
 
     subtract(value) {
-      calculator.result -= value;
+      return calculator.result - value;
     },
 
     multiply(value) {
-      calculator.result *= value;
+      return calculator.result * value;
     },
 
     divide(value) {
-      calculator.result /= value;
+      return calculator.result / value;
     },
 
     reset(value) {
       calculator.result = 0;
 
-      return { operate: calculator.operate, reset: calculator.reset };
+      return calculator;
     },
   };
 
